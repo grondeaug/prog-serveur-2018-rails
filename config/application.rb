@@ -33,7 +33,7 @@ module ProgServeurRails
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'http://localhost:3000'
-        resource '/v*/to_do*', :headers => :any, :methods => [:get]
+        resource '/v*/to_do*', :headers => :any, :methods => %i( get post )
       end
     end
   end
