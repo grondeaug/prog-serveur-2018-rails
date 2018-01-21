@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-todos = ToDo.create(
+ToDo.all.map &:delete
+ToDo.create(
     [
         {
             owner: "Martino",
