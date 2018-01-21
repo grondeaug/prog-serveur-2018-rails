@@ -10,11 +10,22 @@ module V1
       render json: @todo
     end
 
+    def update
+      @todo = ToDo.find(params[:id])
+      @todo&.update_attributes(to_do_update_params)
+      render json: @todo
+    end
+
     private
 
       # Handles the safe parameters to avoid injections
       def to_do_params
         params.require(:todo).permit(%i( id owner content ))
+      end
+
+      # Handles the safe parameters to avoid injections
+      def to_do_update_params
+        params.require(:todo).permit(%i( owner content ))
       end
   end
 end
