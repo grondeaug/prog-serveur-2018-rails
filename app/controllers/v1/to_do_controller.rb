@@ -16,6 +16,15 @@ module V1
       render json: @todo
     end
 
+    def destroy
+      @todo = ToDo.find(params[:id])
+      if @todo.destroy
+        head :no_content, status: :ok
+      else
+        render json: @todo.errors, status: :unprocessable_entity
+      end
+    end
+
     private
 
       # Handles the safe parameters to avoid injections
